@@ -1,7 +1,7 @@
 """
 distribution.py
-Author: <your name here>
-Credit: <list sources used, if any>
+Author: Rachel Matthew
+Credit: none
 
 Assignment:
 
@@ -70,4 +70,3 @@ print('The distribution of characters in "{0}" is:'.format(string))
 for x in range(len(ans)):
     if ans[x][0]>0:
         print(ans[x][1]*ans[x][0])
-
