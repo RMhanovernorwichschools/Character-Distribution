@@ -38,24 +38,36 @@ Notice about this example:
 """
 import string
 
-string=list(input('Please enter a string of text (the bigger the better): '))
+string=input('Please enter a string of text (the bigger the better): ')
+characters=list(string)
 
 uppercase=list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
 alphabet=list('abcdefghijklmnopqrstuvwxyz')
 
-for x in range(len(string)):
+for x in range(len(characters)):
     for n in range(len(uppercase)):
-        if uppercase[n]==string[x]:
-            string[x]=alphabet[n]
+        if uppercase[n]==characters[x]:
+            characters[x]=alphabet[n]
 
 frequency=[]
 for x in alphabet:
-    frequency.append(string.count(x))
+    frequency.append(characters.count(x))
 
 distribution=list(zip(frequency, alphabet))
 distribution.sort()
 
-for x in range(len(distribution)):
-    if distribution[x][0]>0:
-        print(distribution[x][1]*distribution[x][0])
+ans=[]
+guide=[]
+for x in range(0, distribution[-1][0]):
+    guide.append(distribution[-1][0]-x)
+for x in guide:
+    for n in range(len(distribution)):
+        if distribution[n][0]==x:
+            ans.append(distribution[n])
+    
+print('The distribution of characters in "{0}" is:'.format(string))
+
+for x in range(len(ans)):
+    if ans[x][0]>0:
+        print(ans[x][1]*ans[x][0])
 
